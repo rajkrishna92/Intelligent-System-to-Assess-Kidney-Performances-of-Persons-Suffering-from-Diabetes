@@ -1,0 +1,46 @@
+[System]
+Name='1st_stage'
+Type='mamdani'
+Version=2.0
+NumInputs=3
+NumOutputs=1
+NumRules=0
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Blood_{}Sugar'
+Range=[4 8]
+NumMFs=3
+MF1='Low':'sigmf',[-4.4 5.7]
+MF2='mid':'gaussmf',[0.3 6]
+MF3='high':'sigmf',[4.4 6.4]
+
+[Input2]
+Name='BP_{}Systolic'
+Range=[80 180]
+NumMFs=3
+MF1='Low':'sigmf',[-0.226 120]
+MF2='Mid':'gaussmf',[7.5 130]
+MF3='High':'sigmf',[0.226 140]
+
+[Input3]
+Name='BP_{}Diastolic'
+Range=[60 110]
+NumMFs=3
+MF1='Low':'sigmf',[-0.226 80]
+MF2='mf2':'gaussmf',[3 85]
+MF3='mf3':'sigmf',[0.226 90]
+
+[Output1]
+Name='output1'
+Range=[0 1]
+NumMFs=3
+MF1='mf1':'trimf',[-0.416666666666667 0 0.416666666666667]
+MF2='mf2':'trimf',[0.0833333333333333 0.5 0.916666666666667]
+MF3='mf3':'trimf',[0.583333333333333 1 1.41666666666667]
+
+[Rules]

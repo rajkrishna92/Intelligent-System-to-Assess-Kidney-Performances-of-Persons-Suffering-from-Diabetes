@@ -1,0 +1,40 @@
+[System]
+Name='3rd stage'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=0
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Urine_{}Albumin'
+Range=[1 350]
+NumMFs=3
+MF1='Normal':'sigmf',[-0.05 30]
+MF2='microalbuminuria':'gaussmf',[110 165]
+MF3='macroalbuminuria':'sigmf',[0.22 310]
+
+[Input2]
+Name='GFR'
+Range=[0 100]
+NumMFs=5
+MF1='Kidney_{}Fail':'sigmf',[-0.268553409819927 14.5]
+MF2='Moderate':'gaussmf',[10.2291125596092 44.5]
+MF3='Normal':'sigmf',[0.600474387915855 90]
+MF4='Severe':'gaussmf',[5.90055145463255 22]
+MF5='Mild':'gaussmf',[6.5 74.5]
+
+[Output1]
+Name='output1'
+Range=[0 1]
+NumMFs=3
+MF1='mf1':'trimf',[-0.416666666666667 0 0.416666666666667]
+MF2='mf2':'trimf',[0.0833333333333333 0.5 0.916666666666667]
+MF3='mf3':'trimf',[0.583333333333333 1 1.41666666666667]
+
+[Rules]
